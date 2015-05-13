@@ -11,6 +11,15 @@
       var winPosition = [oneC, twoC, threeC, fourC, fiveC, sixC, sevenC, eightC];
       var $messageTurn = $('.whosTurn');
       
+      var audioWin = new Audio('http://remix.freakonomix.com/remixes/2080/Eye%20Of%20The%20Storm%20(DJ%20Sisco%20Remix)%20master.mp3')
+      audioWin.volume = 0.2;
+
+      var punchSfx = new Audio('assets/sfjab.mp3');
+      var hadouken = new Audio('assets/hadouken.mp3');
+      var chunkick = new Audio('assets/chunkick.mp3');
+      var sfchoose = new Audio('assets/sfchoose.mp3');
+      hadouken.volume = 0.2;
+      chunkick.volume = 0.2;
 
       var circle = "ooo";
       var exxs = "xxx";
@@ -75,12 +84,16 @@
 
                 if (turn === "x") {      
                   $('#ryu').css({backgroundImage : ryThrow});     //switch to throwing gif
+                  punchSfx.play();
+                  hadouken.play();
                   setTimeout(ryuStand, 1000);                      //switch back to standing gif
                   setTimeout(leftSideX, 400);                     //side bar height drop
                   setTimeout( function() { $box.addClass('exxs'); } , 700); //add players mark to square
                 } else {
                   
                   $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 400});
+                  punchSfx.play();
+                  chunkick.play();
                   setTimeout(chunStand, 600);
                   setTimeout(rightSideO, 300);
                   setTimeout( function() { $box.addClass('circle'); } , 700);
@@ -130,7 +143,6 @@
 
 
         //checks if winner or game over. 
-     
         //gets the value of tic array which is all of the players move. Places moves into winning combos
         //if those strings equal "xxx" or 'ooo' we have a winner.
 
@@ -163,6 +175,7 @@
       function winner(whoWon){
 
           if(whoWon === 1){
+              audioWin.play();
               rScore +=1;
               $('.scoreR').html(rScore)
               $('#trophy').addClass('tRight');
@@ -170,6 +183,7 @@
                                                              "z-index"  : 1002,
                                                                     top : 370})}, 1000);
           }else if (whoWon === 2){
+              audioWin.play();
               lScore +=1;
               $('.scoreL').html(lScore)
               $('#trophy').addClass('tLeft');
@@ -227,16 +241,6 @@
       };
 
 
-      function visResult(combo) {
-        //console.log(combo + $('.box')[ parseInt(combo[0][0])  ]);
-        // $('.box')[ parseInt(combo[0])].addClass("winner");
-        // $('.box')[ parseInt(combo[1])].addClass("winner");
-        // $('.box')[ parseInt(combo[2])].addClass("winner");
-
-        // $('.box').not('.winner').addClass("looser");
-      };
-
-
       function gameOver(){
         $('#gameOver').show();
       };
@@ -272,6 +276,9 @@
             
         });
 
+        audioWin.currentTime = 0;
+        audioWin.pause();
+
         $('.rightSide li').remove();
         $('.leftSide li').remove();
 
@@ -290,6 +297,8 @@
         $xTop.css('top', '190px');
         $('.turn').addClass('exxs');
         $('.turn').removeClass('circle');
+
+        sfchoose.play()
       };
 
       function boxTurnToggle() {
@@ -306,7 +315,7 @@
         $('#ryu').css({backgroundImage : ryStand, top: 420, "z-index": 100});
       };
 
-      function preloader() {
+      function preloader() {      
       if (document.images) {
 
       var img1 = new Image();
