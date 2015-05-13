@@ -40,6 +40,7 @@
       var screenPos;
 
       beginGame();
+      preloader();
    
       var tic = [1, 1, 1,
         1, 1, 1,
@@ -303,6 +304,23 @@
       function ryuStand() {
         $('#ryu').css({backgroundImage : ryStand, top: 420, "z-index": 100});
       };
+
+      function preloader() {
+      if (document.images) {
+
+      var img1 = new Image();
+      var img2 = new Image();
+      var img3 = new Image();
+      var img4 = new Image();
+
+      img1.src = "../assets/ryuthrow.gif";
+      img1.src = "../assets/chunthrow.gif";
+      img1.src = "../assets/chunwin.gif";
+      img4.src = "../assets/ryuwin.gif";
+      }
+      };
+
+   
 
 
       $('.box').on('click', move);
