@@ -314,8 +314,8 @@
       var img4 = new Image();
 
       img1.src = "../assets/ryuthrow.gif";
-      img1.src = "../assets/chunthrow.gif";
-      img1.src = "../assets/chunwin.gif";
+      img2.src = "../assets/chunthrow.gif";
+      img3.src = "../assets/chunwin.gif";
       img4.src = "../assets/ryuwin.gif";
       }
       };
