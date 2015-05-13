@@ -41,6 +41,7 @@
 
       beginGame();
       preloader();
+      setWidth();
    
       var tic = [1, 1, 1,
         1, 1, 1,
@@ -319,9 +320,12 @@
       img4.src = "assets/ryuwin.gif";
       }
       };
+      
+      function setWidth(){
+      var size = $(window).innerWidth();
+      $('#gameOver').css({width: size});
+      };
 
-   
-
-
+      $(window).on('resize', function() { setWidth(); });
       $('.box').on('click', move);
       $('#gameOver').on('click', restartGame);
