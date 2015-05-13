@@ -313,10 +313,10 @@
       var img3 = new Image();
       var img4 = new Image();
 
-      img1.src = "../assets/ryuthrow.gif";
-      img2.src = "../assets/chunthrow.gif";
-      img3.src = "../assets/chunwin.gif";
-      img4.src = "../assets/ryuwin.gif";
+      img1.src = "assets/ryuthrow.gif";
+      img2.src = "assets/chunthrow.gif";
+      img3.src = "assets/chunwin.gif";
+      img4.src = "assets/ryuwin.gif";
       }
       };
 
