@@ -59,10 +59,6 @@
 
 
 
-
-
-
-
       var move = function() {
         
           var $box = $(this);
@@ -72,13 +68,13 @@
             $box.addClass('boxPicked');   //add a border around selected box
             $box.data('used', turn);      //updates box's data to players mark
 
-            var position = $box.index();
+            var position = $box.index();    //box's index linked to tic's array position
             
 
-            tic[position] = turn;               //update array with players chosen moves x or o
+            tic[position] = turn;             //update array position with players chosen moves x or o
 
             
-//------------------------------------------animation-------------------------------------------------
+            //---------------------------------animation--------------------------------
 
             screenPos = $(this).offset();        //used as the target when throwing the gif's
 
@@ -99,7 +95,7 @@
                   setTimeout( function() { $box.addClass('circle'); } , 700);
                 }
             
-    //------------------------------- animation-------------------------------------------------    
+              //------------------------------- animation--------------------------    
 
             nextPlayersTurn();  //checks wins
             boxTurnToggle(); //update picture of whos turn
@@ -110,6 +106,7 @@
 
       };
 
+    //----------------------------------------Move function end-----------------------------
 
 
         function nextPlayersTurn() {
@@ -142,8 +139,8 @@
         var combos = [one, two, three, four, five, six, seven, eight];
 
 
-        //checks if winner or game over. 
-        //gets the value of tic array which is all of the players move. Places moves into winning combos
+        //checks for winner or game over. 
+        //gets the value of tic array which contains all the players moves. Places moves into winning combos
         //if those strings equal "xxx" or 'ooo' we have a winner.
 
         for (var i = 0; i < combos.length; i++) { 
@@ -154,7 +151,7 @@
           if (circle === combos[i]) {         //chun Li win
               winner(1);
               return true;
-              //visResult(winPosition[i]);  
+           
           } else if (exxs === combos[i]) {    //ryu win
               winner(2);
               return true;
@@ -171,7 +168,7 @@
 
 
 
-      //places trophy to winners side and updates gif to win
+      //places trophy to winners side and updates gif to win stance
       function winner(whoWon){
 
           if(whoWon === 1){
@@ -216,7 +213,6 @@
         }, 10);
        
       };
-
 
 
       function rightSideO(){
