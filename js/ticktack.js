@@ -73,13 +73,13 @@
 
                 if (turn === "x") {      
                   $('#ryu').css({backgroundImage : ryThrow});     //switch to throwing gif
-                  setTimeout(ryuStand, 700);                      //switch back to standing gif
+                  setTimeout(ryuStand, 1000);                      //switch back to standing gif
                   setTimeout(leftSideX, 400);                     //side bar height drop
                   setTimeout( function() { $box.addClass('exxs'); } , 700); //add players mark to square
                 } else {
                   
                   $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 400});
-                  setTimeout(chunStand, 500);
+                  setTimeout(chunStand, 600);
                   setTimeout(rightSideO, 300);
                   setTimeout( function() { $box.addClass('circle'); } , 700);
                 }
