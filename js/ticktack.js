@@ -78,7 +78,6 @@ $(document).ready( function() {
             }
         
 
-
         if(aiOn === true && turn ==='o'){
             setTimeout(aiTurn , 1000);
         }
@@ -104,8 +103,6 @@ $(document).ready( function() {
             nextPlayersTurn();  //checks wins
             boxTurnToggle(); //update picture of whos turn
       };
-
-
 
 
       var aiTurn = function() {

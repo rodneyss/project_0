@@ -25,6 +25,8 @@ ul{
     text-shadow: 2px 3px 3px #292929;
     letter-spacing: -7px;
     -webkit-text-stroke: 1px white;
+    -moz-text-stroke: 1px white;
+    -o-text-stroke: 1px white;
     text-stroke: 1px white;
 }
 
@@ -227,12 +229,22 @@ height: 10px;
   left: 50%;
   transform: translate(-50%);
   top:200px;
-  font-size: 100px;
-    font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
-    text-shadow: 2px 3px 3px #292929;
-    letter-spacing: -7px;
-    -webkit-text-stroke: 1px white;
-    text-stroke: 1px white;
+ 
+    -webkit-animation-name: homeCycle; 
+    -webkit-animation-duration:.5s; 
+    -webkit-animation-direction:alternate; 
+    -webkit-animation-iteration-count:infinite; 
+
+    -moz-animation-name: homeCycle; 
+    -moz-animation-duration:.5s; 
+    -moz-animation-direction:alternate; 
+    -moz-animation-iteration-count:infinite;  
+
+    -o-animation-name: homeCycle; 
+    -o-animation-duration:.5s; 
+    -o-animation-direction:alternate; 
+    -o-animation-iteration-count:infinite;    
+
 
 
     animation-name: homeCycle; 
@@ -240,10 +252,7 @@ height: 10px;
     animation-direction:alternate; 
     animation-iteration-count:infinite; 
 
-    -webkit-animation-name: homeCycle; 
-    -webkit-animation-duration:.5s; 
-    -webkit-animation-direction:alternate; 
-    -webkit-animation-iteration-count:infinite;   
+    
 }
 
 
@@ -267,8 +276,12 @@ height: 10px;
 
 .trophyAn{
         -webkit-animation: swing 1s ease;
+        -moz-animation: swing 1s ease;
+        -o-animation: swing 1s ease;
         animation: swing 1s ease;
         -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+        -o-animation-iteration-count: infinite;
         animation-iteration-count: infinite;
 }
 
@@ -329,6 +342,12 @@ border-radius: 100%;
     -webkit-animation-name: impactPunch; 
     -webkit-animation-duration:.6s; 
     -webkit-animation-iteration-count:1; 
+    -moz-animation-name: impactPunch; 
+    -moz-animation-duration:.6s; 
+    -moz-animation-iteration-count:1;
+    -o-animation-name: impactPunch; 
+    -o-animation-duration:.6s; 
+    -o-animation-iteration-count:1;  
     animation-name: impactPunch; 
     animation-duration:.6s; 
     animation-iteration-count:1; 
