@@ -1,7 +1,9 @@
 $(document).ready( function() {
       
       
-      var audioWin = new Audio('http://remix.freakonomix.com/remixes/2080/Eye%20Of%20The%20Storm%20(DJ%20Sisco%20Remix)%20master.mp3')
+      var audioWin = new Audio('assets/eyestorm.mp3');
+      var audioNo = new Audio('assets/no.mp3');
+      audioNo.volume = 0.2;
       audioWin.volume = 0.2;
 
       audioWin.currentTime = 0;
@@ -41,6 +43,7 @@ $(document).ready( function() {
       var $xTop= $('#leftSide');
       var $oTop= $('#rightSide');
       var tCounter = 0;
+      var winNum;
       var screenPos;
       var aiOn = true;
 
@@ -53,9 +56,7 @@ $(document).ready( function() {
       beginGame();
       preloader();
       setWidth();
-    
-    
-
+     
 
       var move = function() {
         
@@ -67,14 +68,14 @@ $(document).ready( function() {
             } 
 
             else {
-              alert("postion used already");
+            boxTaken($box);
             }
         }
 
         else if( tic[$box.index()] === 1 ){
             boxChosen($box);
             }else{
-              alert("postion used already");
+             boxTaken($box);
             }
         
 
@@ -84,31 +85,27 @@ $(document).ready( function() {
 
     };
 
+    function boxTaken($box){
+       $box.addClass("trophyAn");
+        setTimeout( function() { $box.removeClass("trophyAn") }, 1000);
+        audioNo.play();
+    }
+
 
       function boxChosen($box) {
-            tCounter +=1;                 //track game moves
-                                  
+            tCounter +=1;                 //track game moves                      
             $box.addClass('boxPicked');   //add a border around selected box
-           
-
-            var position = $box.index();    //box's index linked to tic's array position
-            
-
-            tic[position] = turn;             //update array position with players chosen moves x or o
-
-            screenPos = $box.offset();        //used as the target when throwing the gif's
-
+            var position = $box.index();   //box's index linked to tic's array position
+            tic[position] = turn;         //update array position with players chosen moves x or o
+            screenPos = $box.offset();   //used as the target when throwing the gif's
             throwBlockAnim($box);
-
-            nextPlayersTurn();  //checks wins
-            boxTurnToggle(); //update picture of whos turn
+            nextPlayersTurn();          //checks wins
+            boxTurnToggle();            //update picture of whos turn
       };
 
 
       var aiTurn = function() {
            var lookForMove = true;
-
-
            if(turn === "o"){
               while(lookForMove ){
                 var position = Math.floor(Math.random() * 9);
@@ -155,6 +152,8 @@ $(document).ready( function() {
         function nextPlayersTurn() {
         if (  gameFinished()  ) {       
           gameOver();
+          winner(winNum);
+
         } else if (turn === "x") {
           turn = 'o';
         } else {
@@ -188,19 +187,18 @@ $(document).ready( function() {
         //if those strings equal "xxx" or 'ooo' we have a winner.
 
         for (var i = 0; i < combos.length; i++) { 
-          console.log(combos);
           if (circle === combos[i]) {         //chun Li win
-              winner(1);
+              winNum = 1;
               return true;
            
           } else if (exxs === combos[i]) {    //ryu win
-              winner(2);
+              winNum = 2;
               return true;
           }
         }
 
         if (tCounter ===9){         //game over no winners
-              winner(3);
+              winNum = 3
               return true;
         }
 
@@ -284,7 +282,6 @@ $(document).ready( function() {
 
 
       function beginGame() {
-        console.log('starting game')
         sideSetup();
         $('#gameOver').hide();
       };
@@ -311,6 +308,7 @@ $(document).ready( function() {
         });
 
         audioWin.currentTime = 0;
+        audioWin.loop = true;
         audioWin.pause();
 
         $('.rightSide li').remove();
@@ -378,6 +376,15 @@ $(document).ready( function() {
         }
       }
 
+      function resetScore(){
+        rScore = 0;
+        lScore = 0;
+        $('.scoreL').html(lScore)
+        $('.scoreR').html(rScore)
+        restartGame();
+      }
+
+      $('#resetScore').on('click', resetScore);
       $('input').on('click', toggleAI);
       $(window).on('resize', function() { setWidth(); });
       $('.box').on('click', move);
