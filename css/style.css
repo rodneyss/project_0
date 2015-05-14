@@ -1,22 +1,14 @@
 
-
 body{
-  background-image: url("http://www.pptbackgrounds.net/uploads/elegant-grey-illumination-background-presentations-powerpoint-backgrounds.jpg");
-  background-position-y: -300px;
+  background-image: url("../assets/bg.jpg");
+ /* background-position-y: -300px;*/
+
+ background-position-y: -18px;
   overflow: hidden;
+  
 }
 
 h1{
- /* margin-top: 0;
-  top: 0;
-  text-align: center;
-   font-size: 100px;
-    font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
-    text-shadow: 2px 3px 3px #292929;
-    letter-spacing: -7px;
-    -webkit-text-stroke: 1px white;
-    text-stroke: 1px white;
-  background: rgba(4,112,240, 0.2);*/
 
 }
 
@@ -35,6 +27,21 @@ ul{
     -webkit-text-stroke: 1px white;
     text-stroke: 1px white;
 }
+
+#aiChoice{
+  display: inline;
+  position: absolute;
+  right: 100px;
+  top: 600px;
+  color: rgba(225,239,243, 0.8);
+}
+
+label{
+  padding: 5px;
+  
+}
+
+
 
 .score{
   position: absolute;
@@ -122,7 +129,7 @@ ul{
   margin-top: 0;
   width: 290px;
   height:250px;
-  /*border: 1px solid black;*/
+  
 }
 
 .looser{
@@ -174,16 +181,6 @@ background-size: contain;
   top:15px;
 }
 
-/*.whosTurn{
-  position: absolute;
-  top: 60px;
-  left:50%;
-  transform: translate(-50%);
-  text-align: center;
-  color: white;
-  display: inline-block;
-
-}*/
 
 #container{
 
@@ -191,8 +188,6 @@ background-size: contain;
  padding-top: 230px;
   width: 960px;
   height: 600px;
-
-  /*border: 1px solid black;*/
 
 }
 
@@ -221,8 +216,7 @@ height: 10px;
   left: 0px;
   width: 1680px;
   height: 700px;
-  background: rgba(0,0,0,0.5);
-  /*text-align: center;*/
+  background: rgba(0,0,0,0.6);
   z-index: 1000;
 
 }
@@ -240,7 +234,7 @@ height: 10px;
     text-stroke: 1px white;
 
 
-      animation-name: homeCycle; 
+    animation-name: homeCycle; 
     animation-duration:.5s; 
     animation-direction:alternate; 
     animation-iteration-count:infinite; 
@@ -303,6 +297,40 @@ height: 10px;
   background-size: stretch;
   background-repeat: no-repeat;
 
+}
+
+.impactLeft{
+  top: 380px;
+  left: 190px;
+  
+}
+
+.impactRight{
+  top: 350px;
+  right: 170px;
+
+}
+
+.impacted{
+position: absolute;
+
+background-color: rgba(255,255,255,0.7);
+width: 150px;
+height: 150px;
+border: 1px;
+border-radius: 100%;
+  -webkit-transform: scale( 0.01 );
+  -moz-transform: scale( 0.01 );
+  -o-transform: scale( 0.01 );
+  -ms-transform: scale( 0.01 );
+  transform: scale( 0.01 ); 
+
+    -webkit-animation-name: impactPunch; 
+    -webkit-animation-duration:.6s; 
+    -webkit-animation-iteration-count:1; 
+    animation-name: impactPunch; 
+    animation-duration:.6s; 
+    animation-iteration-count:1; 
 }
 
 

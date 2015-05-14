@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   
   <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/ticktack.js"></script>
   
 </head>
 <body>
@@ -24,15 +25,15 @@
 </div>
 
 <div id="table">  
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
-<div class="box shadow" data-used=0></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
+<div class="box shadow"></div>
 </div>
 
 <div id="leftSide">
@@ -48,9 +49,18 @@
 </div>
 <div class="score scoreR fancy shadow"></div>
 <div class="score scoreL fancy shadow"></div>
+re
+<div id="aiChoice">
+AI: 
+<input type="radio" name="group1" id="r1" value="on" checked="checked"/><label for="r1">On</label>
+<input type="radio" name="group1" id="r2" value="off" /><label for="r2">Off</label>
 
+</div>
 <div id="chunLi" class="chunStand"></div>
-<div id="ryu" class="ryuStand"></div>
+<div id="ryu" class="ryuStand"> </div>
+
+<div class="impactLeft"></div>
+<div class="impactRight"></div>
 
 <div id="gameOver">
 <span id="message">GAME OVER!!!</span> 
@@ -64,5 +74,5 @@
 
 
 </body>
-<script src="js/ticktack.js"></script>
+
 </html>

@@ -1,18 +1,11 @@
-      var oneC = "012";
-      var twoC = "345";
-      var threeC = "678";
-      var fourC = "036";
-      var fiveC = "147";
-      var sixC = "258";
-      var sevenC = "642";
-      var eightC = "048";
-
-
-      var winPosition = [oneC, twoC, threeC, fourC, fiveC, sixC, sevenC, eightC];
-      var $messageTurn = $('.whosTurn');
+$(document).ready( function() {
+      
       
       var audioWin = new Audio('http://remix.freakonomix.com/remixes/2080/Eye%20Of%20The%20Storm%20(DJ%20Sisco%20Remix)%20master.mp3')
       audioWin.volume = 0.2;
+
+      audioWin.currentTime = 0;
+      audioWin.pause();
 
       var punchSfx = new Audio('assets/sfjab.mp3');
       var hadouken = new Audio('assets/hadouken.mp3');
@@ -38,6 +31,8 @@
       var ryStand = "url('assets/ryustance.gif')"
       var ryThrow = "url('assets/ryuthrow.gif')";
       var ryWin = "url('assets/ryuwin.gif')";
+      var $impactRight = $('.impactRight');
+      var $impactLeft = $('.impactLeft');
 
       
       var $turnBox = $('.turn');
@@ -47,66 +42,117 @@
       var $oTop= $('#rightSide');
       var tCounter = 0;
       var screenPos;
+      var aiOn = true;
 
-      beginGame();
-      preloader();
-      setWidth();
-   
       var tic = [1, 1, 1,
         1, 1, 1,
         1, 1, 1
       ];
 
 
+      beginGame();
+      preloader();
+      setWidth();
+    
+    
+
 
       var move = function() {
         
           var $box = $(this);
-          if (  $box.data('used') === 0) { 
-            tCounter +=1;     //track game moves
+
+        if(aiOn===true){
+            if (  tic[$box.index()] === 1 && turn ==='x'){ 
+                boxChosen($box);
+            } 
+
+            else {
+              alert("postion used already");
+            }
+        }
+
+        else if( tic[$box.index()] === 1 ){
+            boxChosen($box);
+            }else{
+              alert("postion used already");
+            }
+        
+
+
+        if(aiOn === true && turn ==='o'){
+            setTimeout(aiTurn , 1000);
+        }
+
+    };
+
+
+      function boxChosen($box) {
+            tCounter +=1;                 //track game moves
                                   
             $box.addClass('boxPicked');   //add a border around selected box
-            $box.data('used', turn);      //updates box's data to players mark
+           
 
             var position = $box.index();    //box's index linked to tic's array position
             
 
             tic[position] = turn;             //update array position with players chosen moves x or o
 
-            
-            //---------------------------------animation--------------------------------
+            screenPos = $box.offset();        //used as the target when throwing the gif's
 
-            screenPos = $(this).offset();        //used as the target when throwing the gif's
+            throwBlockAnim($box);
 
-                if (turn === "x") {      
-                  $('#ryu').css({backgroundImage : ryThrow});     //switch to throwing gif
+            nextPlayersTurn();  //checks wins
+            boxTurnToggle(); //update picture of whos turn
+      };
+
+
+
+
+      var aiTurn = function() {
+           var lookForMove = true;
+
+
+           if(turn === "o"){
+              while(lookForMove ){
+                var position = Math.floor(Math.random() * 9);
+
+                if( tic[position]=== 1  ){
+                  lookForMove = false;
+
+                  var box = $('.box')[position];
+                  $box = $(box);
+
+                  boxChosen($box);
+                }
+
+              }
+          }
+
+      };
+
+
+        function throwBlockAnim($box) {
+                  if (turn === "x") {      
+                  $('#ryu').css({backgroundImage : ryThrow, top: 430});     //switch to throwing gif
+                  setTimeout( function() {$impactLeft.toggleClass('impacted')}, 300);
+                  setTimeout( function() {$impactLeft.toggleClass('impacted')}, 1000);
                   punchSfx.play();
                   hadouken.play();
                   setTimeout(ryuStand, 1000);                      //switch back to standing gif
-                  setTimeout(leftSideX, 400);                     //side bar height drop
+                  setTimeout(leftSideX, 400);                     //side bar height drop & throwing anim
                   setTimeout( function() { $box.addClass('exxs'); } , 700); //add players mark to square
                 } else {
                   
-                  $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 400});
+                  $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 410});
+                  setTimeout( function() {$impactRight.toggleClass('impacted')}, 200);
+                  setTimeout( function() {$impactRight.toggleClass('impacted')}, 1000);
                   punchSfx.play();
                   chunkick.play();
                   setTimeout(chunStand, 600);
                   setTimeout(rightSideO, 300);
                   setTimeout( function() { $box.addClass('circle'); } , 700);
                 }
-            
-              //------------------------------- animation--------------------------    
-
-            nextPlayersTurn();  //checks wins
-            boxTurnToggle(); //update picture of whos turn
-
-        } else {
-          alert("postion used already");
-        }
-
-      };
-
-    //----------------------------------------Move function end-----------------------------
+        };
 
 
         function nextPlayersTurn() {
@@ -118,6 +164,7 @@
           turn = 'x';
         }
       };
+
 
         function gameFinished() {
      
@@ -144,10 +191,7 @@
         //if those strings equal "xxx" or 'ooo' we have a winner.
 
         for (var i = 0; i < combos.length; i++) { 
-          console.log( "itteration number " + i+ " : " +combos);
-          console.log( circle +" is equal - " + combos[i]);
-          console.log( exxs +" is equal - " + combos[i]);
-
+          console.log(combos);
           if (circle === combos[i]) {         //chun Li win
               winner(1);
               return true;
@@ -163,7 +207,6 @@
               return true;
         }
 
-
       };
 
 
@@ -178,7 +221,7 @@
               $('#trophy').addClass('tRight');
               setTimeout( function() {$('#chunLi').css({backgroundImage : clWin, 
                                                              "z-index"  : 1002,
-                                                                    top : 370})}, 1000);
+                                                                    top : 380})}, 1000);
           }else if (whoWon === 2){
               audioWin.play();
               lScore +=1;
@@ -186,7 +229,7 @@
               $('#trophy').addClass('tLeft');
               setTimeout( function() {$('#ryu').css({backgroundImage : ryWin,
                                                            "z-index" : 1002,
-                                                                 top : 390})}, 1000);
+                                                                 top : 400})}, 1000);
           }else if (whoWon ===3){
               $('#trophy').hide();
           }
@@ -268,8 +311,6 @@
 
         $('.box').each(function(){
             $(this).removeClass('exxs circle boxPicked');
-            $(this).data('used', 0);
-            
         });
 
         audioWin.currentTime = 0;
@@ -312,8 +353,7 @@
       };
 
       function preloader() {      
-      if (document.images) {
-
+      
       var img1 = new Image();
       var img2 = new Image();
       var img3 = new Image();
@@ -323,7 +363,6 @@
       img2.src = "assets/chunthrow.gif";
       img3.src = "assets/chunwin.gif";
       img4.src = "assets/ryuwin.gif";
-      }
       };
       
       function setWidth(){
@@ -331,6 +370,22 @@
       $('#gameOver').css({width: size});
       };
 
+      function toggleAI(){
+        if( $(this).val() === "on" ){
+          if(aiOn===false){
+            aiOn = true;
+            aiTurn();
+          }
+        }else{
+          aiOn = false;
+        }
+      }
+
+      $('input').on('click', toggleAI);
       $(window).on('resize', function() { setWidth(); });
       $('.box').on('click', move);
       $('#gameOver').on('click', restartGame);
+
+});
+
+
