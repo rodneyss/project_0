@@ -5,7 +5,7 @@ $(document).ready( function() {
       var audioNo = new Audio('assets/no.mp3');
       audioNo.volume = 0.2;
       audioWin.volume = 0.2;
-
+      audioWin.loop = true;
       audioWin.currentTime = 0;
       audioWin.pause();
 
@@ -93,7 +93,7 @@ $(document).ready( function() {
 
     function boxTaken($box){
        $box.addClass("trophyAn");
-        setTimeout( function() { $box.removeClass("trophyAn") }, 1000);
+        setTimeout( function() { $box.removeClass("trophyAn"); }, 1000);
         audioNo.play();
     }
 
@@ -137,8 +137,8 @@ $(document).ready( function() {
                   ryu.style.backgroundImage = ryThrow;  //no jquery for better performace
                   ryu.style.top = "430px";
 
-                  setTimeout( function() { impactLeft.className = "impacted impactLeft"}, 300);
-                  setTimeout( function() { impactLeft.className = "impactLeft"}, 1000);
+                  setTimeout( function() { impactLeft.className = "impacted impactLeft";}, 300);
+                  setTimeout( function() { impactLeft.className = "impactLeft";}, 1000);
                   punchSfx.play();
                   hadouken.play();
                   setTimeout(ryuStand, 1000);                      //switch back to standing gif
@@ -147,7 +147,7 @@ $(document).ready( function() {
                 } else {
                   
                   // $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 410});
-                  chunLi.style.backgroundImage = clThrow; //no jquery for better performance
+                  chunLi.style.backgroundImage = clThrow;
                   chunLi.style.right = "70px";
                   chunLi.style.top = "410px";
 
@@ -282,9 +282,10 @@ $(document).ready( function() {
       };
 
 
+      //todo more efficent way to destroy!
+      function destroy($this) {    // gets rid of the animated gifs being thrown
+        setTimeout( function() { $('#container > .exxs, #container > .circle').remove();},250);
 
-      function destroy() {    // gets rid of the animated gifs being thrown
-        setTimeout( function() { $('#container > .exxs, #container > .circle').remove()},250);
       };
 
 
@@ -321,7 +322,6 @@ $(document).ready( function() {
         });
 
         audioWin.currentTime = 0;
-        audioWin.loop = true;
         audioWin.pause();
 
         $('.rightSide li').remove();
