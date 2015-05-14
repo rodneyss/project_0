@@ -1,23 +1,13 @@
 
 body{
   background-image: url("../assets/bg.jpg");
- /* background-position-y: -300px;*/
-
- background-position-y: -18px;
+  background-position-y: -18px;
   overflow: hidden;
-  
 }
-
-h1{
-
-}
-
 
 ul{
   list-style-type: none;
 }
-
-
 
 .fancy{
     font-size: 100px;
@@ -42,8 +32,6 @@ label{
   padding: 5px;
   
 }
-
-
 
 .score{
   position: absolute;
@@ -135,15 +123,6 @@ label{
   
 }
 
-.looser{
-background-image:;
-background-color: red;
-}
-
-.winner{
-
-}
-
 .circle{
 background-image: url("../assets/circle.gif");
 background-size: contain;
@@ -157,23 +136,16 @@ background-size: contain;
 .pieces{
   width: 50px;
   height: 50px;
-  /*border: 1px solid black;*/
   display: inline-block;
 }
 
 #picFrame{
-  
   position: absolute;
   top: 130px;
-  /*background-image: url('../assets/frame.png');
-  background-size: contain;
-  background-repeat: no-repeat;*/
   width:80px;
   height: 80px;
   left: 50%;
   transform: translate(-50%);
-
-
 }
 
 .turn{
@@ -367,6 +339,8 @@ border-radius: 100%;
   cursor: pointer;
   color: rgba(255,32,7,0.8);
 }
+
+
 
 
 

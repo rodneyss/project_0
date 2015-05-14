@@ -25,17 +25,23 @@ $(document).ready( function() {
       var circleImg = "assets/circle.gif";
 
       //chunli animatons
+      var chunLi = document.getElementById('chunLi');
       var clStand = "url('assets/chunstance.gif')";
       var clThrow = "url('assets/chunthrow.gif')";
       var clWin = "url('assets/chunwin.gif')";
+      var width = $(window).innerWidth();     //used to line up throw for chunli
+      width -= 300;
 
       //ryu animations
+      var ryu = document.getElementById('ryu');
       var ryStand = "url('assets/ryustance.gif')"
       var ryThrow = "url('assets/ryuthrow.gif')";
       var ryWin = "url('assets/ryuwin.gif')";
-      var $impactRight = $('.impactRight');
-      var $impactLeft = $('.impactLeft');
 
+      var impactRight = document.getElementsByClassName('impactRight')[0];
+      var impactLeft =  document.getElementsByClassName('impactLeft')[0];
+
+      document.getElementsByClassName('.impactLeft');
       
       var $turnBox = $('.turn');
       var turn = $turnBox.data('turn');
@@ -127,9 +133,12 @@ $(document).ready( function() {
 
         function throwBlockAnim($box) {
                   if (turn === "x") {      
-                  $('#ryu').css({backgroundImage : ryThrow, top: 430});     //switch to throwing gif
-                  setTimeout( function() {$impactLeft.toggleClass('impacted')}, 300);
-                  setTimeout( function() {$impactLeft.toggleClass('impacted')}, 1000);
+                  //$('#ryu').css({backgroundImage : ryThrow, top: 430});     //switch to throwing gif
+                  ryu.style.backgroundImage = ryThrow;  //no jquery for better performace
+                  ryu.style.top = "430px";
+
+                  setTimeout( function() { impactLeft.className = "impacted impactLeft"}, 300);
+                  setTimeout( function() { impactLeft.className = "impactLeft"}, 1000);
                   punchSfx.play();
                   hadouken.play();
                   setTimeout(ryuStand, 1000);                      //switch back to standing gif
@@ -137,9 +146,13 @@ $(document).ready( function() {
                   setTimeout( function() { $box.addClass('exxs'); } , 700); //add players mark to square
                 } else {
                   
-                  $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 410});
-                  setTimeout( function() {$impactRight.toggleClass('impacted')}, 200);
-                  setTimeout( function() {$impactRight.toggleClass('impacted')}, 1000);
+                  // $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 410});
+                  chunLi.style.backgroundImage = clThrow; //no jquery for better performance
+                  chunLi.style.right = "70px";
+                  chunLi.style.top = "410px";
+
+                  setTimeout( function() { impactRight.className = "impacted impactRight ";}, 200);
+                  setTimeout( function() { impactRight.className = "impactRight";}, 1000);
                   punchSfx.play();
                   chunkick.play();
                   setTimeout(chunStand, 600);
@@ -241,9 +254,9 @@ $(document).ready( function() {
           //then gets animated to be thrown at table, then runs destroy()
 
           $('#leftSide li:last-child div').unwrap().appendTo('#container').css({position: "absolute",
-                                                                          top: 350,
-                                                                          left: 400}).animate(
-                                                                          screenPos, 200, destroy() );
+                                                                          top: 420,
+                                                                          left: 280}).animate(
+                                                                          screenPos, 300, destroy() );
 
           $xTop.animate({top: '+=55'},300);   //drops the side bar with a small bounce effect
           $xTop.animate({top: '-=20'},200);
@@ -254,12 +267,12 @@ $(document).ready( function() {
 
 
       function rightSideO(){
-
+       
         setTimeout( function(){
         $('#rightSide li:last-child div').unwrap().appendTo('#container').css({position: "absolute",
-                                                                          top: 350,
-                                                                          left: 800}).animate(
-                                                                          screenPos, 200, destroy() );
+                                                                          top: 390,
+                                                                          left: width}).animate(
+                                                                          screenPos, 300, destroy() );
 
         $oTop.animate({top: '+=55'},300);
         $oTop.animate({top: '-=20'},200);
@@ -271,7 +284,7 @@ $(document).ready( function() {
 
 
       function destroy() {    // gets rid of the animated gifs being thrown
-        setTimeout( function() { $('#container > .exxs, #container > .circle').remove()},180);
+        setTimeout( function() { $('#container > .exxs, #container > .circle').remove()},250);
       };
 
 
@@ -340,11 +353,20 @@ $(document).ready( function() {
 
 
       function chunStand() {
-        $('#chunLi').css({backgroundImage : clStand, right : 40, top: 430, "z-index": 100});
+        //$('#chunLi').css({backgroundImage : clStand, right : 40, top: 430, "z-index": 100});
+        //no jQuery for performance
+        chunLi.style.backgroundImage = clStand; 
+        chunLi.style.right = "40px";
+        chunLi.style.top = "430px";
+        chunLi.style.zIndex = 100;
       };
 
       function ryuStand() {
-        $('#ryu').css({backgroundImage : ryStand, top: 420, "z-index": 100});
+        //$('#ryu').css({backgroundImage : ryStand, top: 420, "z-index": 100});
+        //no jQuery for performance
+        ryu.style.backgroundImage = ryStand;
+        ryu.style.top = "420px";
+        ryu.style.zIndex = 100;
       };
 
       function preloader() {      
