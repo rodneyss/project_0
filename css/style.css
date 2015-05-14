@@ -69,17 +69,18 @@ label{
 
 #title{
   position: absolute;
-  left: 350px;
-
+  left: 50%;
+  transform: translate(-50%);
   top: -40px;
-  width: 960px;
+  width: 600px;
   font-size: 3em;
 }
 
 #whosTurn{
   position: absolute;
-  left: 550px;
-  width: 400px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 170px;
   top:180px;
   font-size: 25px;
 }
