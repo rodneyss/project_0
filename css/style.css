@@ -229,7 +229,6 @@ height: 10px;
 
 
 .tLeft{
-  
   position: absolute;
   left: 60px;
   top: 120px;
@@ -264,11 +263,9 @@ height: 10px;
   top:430px;
   width:180px;
   height:150px;
-
   background-image: url('../assets/chunstance.gif');
   background-size: stretch;
   background-repeat: no-repeat;
- 
 
 }
 
@@ -285,13 +282,13 @@ height: 10px;
 
 }
 
-.impactLeft{
+#impactLeft{
   top: 380px;
   left: 190px;
   
 }
 
-.impactRight{
+#impactRight{
   top: 350px;
   right: 170px;
 

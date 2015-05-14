@@ -38,10 +38,9 @@ $(document).ready( function() {
       var ryThrow = "url('assets/ryuthrow.gif')";
       var ryWin = "url('assets/ryuwin.gif')";
 
-      var impactRight = document.getElementsByClassName('impactRight')[0];
-      var impactLeft =  document.getElementsByClassName('impactLeft')[0];
+      var impactRight = document.getElementById('impactRight');
+      var impactLeft =  document.getElementById('impactLeft');
 
-      document.getElementsByClassName('.impactLeft');
       
       var $turnBox = $('.turn');
       var turn = $turnBox.data('turn');
@@ -137,8 +136,8 @@ $(document).ready( function() {
                   ryu.style.backgroundImage = ryThrow;  //no jquery for better performace
                   ryu.style.top = "430px";
 
-                  setTimeout( function() { impactLeft.className = "impacted impactLeft";}, 300);
-                  setTimeout( function() { impactLeft.className = "impactLeft";}, 1000);
+                  setTimeout( function() { impactLeft.className = "impacted";}, 300);
+                  setTimeout( function() { impactLeft.className = "";}, 1000);
                   punchSfx.play();
                   hadouken.play();
                   setTimeout(ryuStand, 1000);                      //switch back to standing gif
@@ -151,8 +150,8 @@ $(document).ready( function() {
                   chunLi.style.right = "70px";
                   chunLi.style.top = "410px";
 
-                  setTimeout( function() { impactRight.className = "impacted impactRight ";}, 200);
-                  setTimeout( function() { impactRight.className = "impactRight";}, 1000);
+                  setTimeout( function() { impactRight.className = "impacted";}, 200);
+                  setTimeout( function() { impactRight.className = "";}, 1000);
                   punchSfx.play();
                   chunkick.play();
                   setTimeout(chunStand, 600);
