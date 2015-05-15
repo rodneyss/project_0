@@ -1,4 +1,4 @@
-©$(document).ready( function() {
+$(document).ready( function() {
       
       
       var audioWin = new Audio('assets/eyestorm.mp3');
@@ -34,7 +34,7 @@
 
       //ryu animations
       var ryu = document.getElementById('ryu');
-      var ryStand = "url('assets/ryustance.gif')"
+      var ryStand = "url('assets/ryustance.gif')";
       var ryThrow = "url('assets/ryuthrow.gif')";
       var ryWin = "url('assets/ryuwin.gif')";
 
