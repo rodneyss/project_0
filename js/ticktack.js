@@ -1,10 +1,10 @@
-$(document).ready( function() {
+©$(document).ready( function() {
       
       
       var audioWin = new Audio('assets/eyestorm.mp3');
       var audioNo = new Audio('assets/no.mp3');
-      audioNo.volume = 0.2;
-      audioWin.volume = 0.2;
+      audioNo.volume = 0.8;
+      audioWin.volume = 0.8;
       audioWin.loop = true;
       audioWin.currentTime = 0;
       audioWin.pause();
@@ -13,8 +13,8 @@ $(document).ready( function() {
       var hadouken = new Audio('assets/hadouken.mp3');
       var chunkick = new Audio('assets/chunkick.mp3');
       var sfchoose = new Audio('assets/sfchoose.mp3');
-      hadouken.volume = 0.2;
-      chunkick.volume = 0.2;
+      hadouken.volume = 0.8;
+      chunkick.volume = 0.8;
 
       var circle = "ooo";
       var exxs = "xxx";
