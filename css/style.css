@@ -259,13 +259,8 @@ height: 10px;
 
 #chunLi{
   position: absolute;
-  right: 40px;
+  right: 130px;
   top:430px;
-  width:180px;
-  height:150px;
-  background-image: url('../assets/chunstance.gif');
-  background-size: stretch;
-  background-repeat: no-repeat;
 
 }
 
@@ -273,13 +268,6 @@ height: 10px;
   position: absolute;
   left: 130px;
   top: 420px;
-  width:180px;
-  height: 150px;
-
-  background-image: url('../assets/ryustance.gif');
-  background-size: stretch;
-  background-repeat: no-repeat;
-
 }
 
 #impactLeft{

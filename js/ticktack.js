@@ -26,17 +26,17 @@ $(document).ready( function() {
 
       //chunli animatons
       var chunLi = document.getElementById('chunLi');
-      var clStand = "url('assets/chunstance.gif')";
-      var clThrow = "url('assets/chunthrow.gif')";
-      var clWin = "url('assets/chunwin.gif')";
+      var clStand = 'assets/chunstance.gif';
+      var clThrow = 'assets/chunthrow.gif';
+      var clWin = 'assets/chunwin.gif';
       var width = $(window).innerWidth();     //used to line up throw for chunli
       width -= 300;
 
       //ryu animations
       var ryu = document.getElementById('ryu');
-      var ryStand = "url('assets/ryustance.gif')";
-      var ryThrow = "url('assets/ryuthrow.gif')";
-      var ryWin = "url('assets/ryuwin.gif')";
+      var ryStand = 'assets/ryustance.gif';
+      var ryThrow = 'assets/ryuthrow.gif';
+      var ryWin = 'assets/ryuwin.gif';
 
       var impactRight = document.getElementById('impactRight');
       var impactLeft =  document.getElementById('impactLeft');
@@ -133,8 +133,8 @@ $(document).ready( function() {
         function throwBlockAnim($box) {
                   if (turn === "x") {      
                   //$('#ryu').css({backgroundImage : ryThrow, top: 430});     //switch to throwing gif
-                  ryu.style.backgroundImage = ""; //hopefully helps with the gif swap bug >.<
-                  ryu.style.backgroundImage = ryThrow;  //no jquery for better performace
+                  ryu.src = ""; //hopefully helps with the gif swap bug >.<
+                  ryu.src = ryThrow;  //no jquery for better performace
                   ryu.style.top = "430px";
                   ryu.offsetHeight;         //by envoking offsetheight fix gif bug hopefully
 
@@ -148,8 +148,8 @@ $(document).ready( function() {
                 } else {
                   
                   // $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 410});
-                  chunLi.style.backgroundImage = "";
-                  chunLi.style.backgroundImage = clThrow;
+                  chunLi.src = "";
+                  chunLi.src = clThrow;
                   chunLi.style.right = "70px";
                   chunLi.style.top = "410px";
                   chunLi.offsetHeight;
@@ -230,17 +230,16 @@ $(document).ready( function() {
               rScore +=1;
               $('.scoreR').html(rScore)
               $('#trophy').addClass('tRight');
-              setTimeout( function() {$('#chunLi').css({backgroundImage : clWin, 
-                                                             "z-index"  : 1002,
-                                                                    top : 380})}, 1000);
+              setTimeout( function() { $('#chunLi').attr("src", clWin).css({ "z-index"  : 1002,
+                                                                            top : 380})}, 1000);
+                                                                   
           }else if (whoWon === 2){
               audioWin.play();
               lScore +=1;
               $('.scoreL').html(lScore)
               $('#trophy').addClass('tLeft');
-              setTimeout( function() {$('#ryu').css({backgroundImage : ryWin,
-                                                           "z-index" : 1002,
-                                                                 top : 400})}, 1000);
+              setTimeout( function() { $('#ryu').attr("src",ryWin).css({"z-index" : 1002, 
+                                                                            top: 400})}, 1000);
           }else if (whoWon ===3){
               $('#trophy').hide();
           }
@@ -358,8 +357,8 @@ $(document).ready( function() {
       function chunStand() {
         //$('#chunLi').css({backgroundImage : clStand, right : 40, top: 430, "z-index": 100});
         //no jQuery for performance
-        chunLi.style.backgroundImage = clStand; 
-        chunLi.style.right = "40px";
+        chunLi.src = clStand; 
+        chunLi.style.right = "130px";
         chunLi.style.top = "430px";
         chunLi.style.zIndex = 100;
       };
@@ -367,7 +366,7 @@ $(document).ready( function() {
       function ryuStand() {
         //$('#ryu').css({backgroundImage : ryStand, top: 420, "z-index": 100});
         //no jQuery for performance
-        ryu.style.backgroundImage = ryStand;
+        ryu.src = ryStand;
         ryu.style.top = "420px";
         ryu.style.zIndex = 100;
       };
