@@ -135,6 +135,7 @@ $(document).ready( function() {
                   //$('#ryu').css({backgroundImage : ryThrow, top: 430});     //switch to throwing gif
                   ryu.style.backgroundImage = ryThrow;  //no jquery for better performace
                   ryu.style.top = "430px";
+                  ryu.offsetHeight;         //by envoking offsetheight fix gif bug hopefully
 
                   setTimeout( function() { impactLeft.className = "impacted";}, 300);
                   setTimeout( function() { impactLeft.className = "";}, 1000);
@@ -149,6 +150,7 @@ $(document).ready( function() {
                   chunLi.style.backgroundImage = clThrow;
                   chunLi.style.right = "70px";
                   chunLi.style.top = "410px";
+                  chunLi.offsetHeight;
 
                   setTimeout( function() { impactRight.className = "impacted";}, 200);
                   setTimeout( function() { impactRight.className = "";}, 1000);
