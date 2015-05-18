@@ -133,6 +133,7 @@ $(document).ready( function() {
         function throwBlockAnim($box) {
                   if (turn === "x") {      
                   //$('#ryu').css({backgroundImage : ryThrow, top: 430});     //switch to throwing gif
+                  ryu.style.backgroundImage = ""; //hopefully helps with the gif swap bug >.<
                   ryu.style.backgroundImage = ryThrow;  //no jquery for better performace
                   ryu.style.top = "430px";
                   ryu.offsetHeight;         //by envoking offsetheight fix gif bug hopefully
@@ -147,6 +148,7 @@ $(document).ready( function() {
                 } else {
                   
                   // $('#chunLi').css({backgroundImage : clThrow, right : 70, top: 410});
+                  chunLi.style.backgroundImage = "";
                   chunLi.style.backgroundImage = clThrow;
                   chunLi.style.right = "70px";
                   chunLi.style.top = "410px";
